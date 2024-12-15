@@ -2,7 +2,16 @@
 
 source "https://rubygems.org"
 
-# Specify your gem's dependencies in daidan.gemspec
 gemspec
 
 gem "rake", "~> 13.0"
+gem 'bcrypt'
+gem 'dotenv'
+gem 'graphql'
+gem 'jwt'
+gem 'puma'
+gem 'rack'
+gem 'rubocop'
+gem 'sequel'
+gem 'sqlite3'
+gem 'zeitwerk'
