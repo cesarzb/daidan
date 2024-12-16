@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+require 'optparse'
+require_relative '../lib/daidan'
+
+options = {}
+OptionParser.new do |opts|
+  opts.banner = "Usage: daidan [options]"
+
+  opts.on('create_base_user', 'Creates the base user table') do
+    options[:create_base_user] = true
+  end
+end.parse!
+
+if options[:create_base_user]
+  puts "Creating base user table..."
+  Daidan::Commands.create_base_user
+  puts "Base user table created successfully!"
+else
+  puts "Unknown command. Use --help for usage instructions."
+end

@@ -33,3 +33,9 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/daidan.
+
+
+## NOTES
+
+### MIGRATIONS:
+`sequel sqlite://db.db -m db/migrations`
