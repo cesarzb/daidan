@@ -2,8 +2,6 @@ require 'rack'
 require 'json'
 require 'graphql'
 require 'zeitwerk'
-require 'sequel'
-require 'yaml'
 
 module Daidan
   class Application

@@ -47,7 +47,6 @@ module Daidan
 
       def create_application_rb
         content = <<~RUBY
-          require 'dotenv/load'
           $LOAD_PATH.unshift(File.expand_path('../../daidan/lib', __dir__))
           require 'daidan'
 
@@ -118,8 +117,6 @@ module Daidan
 
       def create_schema_rb
         content = <<~RUBY
-          require 'graphql'
-
           class Schema < GraphQL::Schema
             query(QueryType)
             mutation(MutationType)

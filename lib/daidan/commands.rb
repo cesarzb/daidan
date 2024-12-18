@@ -1,3 +1,5 @@
+require 'sequel'
+
 module Daidan
   module Commands
     def self.create_base_user

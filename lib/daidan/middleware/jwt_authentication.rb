@@ -1,5 +1,5 @@
+require 'dotenv/load'
 require 'jwt'
-require 'yaml'
 
 module Daidan
   module Middleware
