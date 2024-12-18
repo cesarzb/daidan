@@ -47,9 +47,6 @@ module Daidan
 
       def create_application_rb
         content = <<~RUBY
-          $LOAD_PATH.unshift(File.expand_path('../../daidan/lib', __dir__))
-          require 'daidan'
-
           class Application < Daidan::Application
             def graphql_schema
               Schema
@@ -72,9 +69,8 @@ module Daidan
         content = <<~RUBY
           require 'rack'
           require 'rack/cors'
-          require_relative 'config/application'
-          $LOAD_PATH.unshift(File.expand_path('../daidan/lib', __dir__))
           require 'daidan'
+          require_relative 'config/application'
 
           use Rack::Reloader, 0
 
