@@ -36,10 +36,6 @@ module Daidan
       raise NotImplementedError, 'Subclasses must define `graphql_schema`'
     end
 
-    def auth_middleware
-      nil
-    end
-
     def handle_json_parse_error
       [400, { 'content-type' => 'application/json' }, [{ error: 'Invalid JSON' }.to_json]]
     end

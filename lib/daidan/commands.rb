@@ -1,9 +1,10 @@
-require 'sequel'
-require 'sequel/extensions/migration'
-
 module Daidan
   module Commands
     def self.create_base_user
+      require_relative 'db/connection'
+      require_relative 'config/application'
+      Daidan::Db::Connection.setup
+
       Sequel::Model.db.transaction do
         Sequel.migration do
           change do
@@ -21,6 +22,15 @@ module Daidan
       raise unless e.message =~ /table `users` already exists/i
 
       puts "The 'users' table is already created."
+    end
+
+    def self.generate(resource_name, *fields)
+      require_relative 'db/connection'
+      require_relative 'config/application'
+      Daidan::Db::Connection.setup
+
+      require_relative 'generators/resource_generator'
+      Daidan::Generators::ResourceGenerator.new(resource_name, fields).generate
     end
   end
 end

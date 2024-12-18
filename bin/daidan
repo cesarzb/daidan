@@ -1,20 +1,35 @@
 #!/usr/bin/env ruby
 require 'optparse'
-require_relative '../lib/daidan'
 
-options = {}
-OptionParser.new do |opts|
-  opts.banner = "Usage: daidan [options]"
+parser = OptionParser.new do |opts|
+  opts.banner = 'Usage: daidan [command] [arguments]'
+end
 
-  opts.on('create_base_user', 'Creates the base user table') do
-    options[:create_base_user] = true
+parser.order!
+command = ARGV.shift
+
+if command == 'new'
+  require_relative '../lib/daidan/generators/base_generator'
+
+  app_name = ARGV.shift
+  if app_name.nil? || app_name.strip.empty?
+    puts 'Usage: daidan new app_name'
+    exit 1
   end
-end.parse!
-
-if options[:create_base_user]
-  puts "Creating base user table..."
-  Daidan::Commands.create_base_user
-  puts "Base user table created successfully!"
+  Daidan::Generators::BaseGenerator.new(app_name).generate
+  exit 0
 else
-  puts "Unknown command. Use --help for usage instructions."
+  require_relative '../lib/daidan'
+
+  if command.nil?
+    puts parser
+    exit 1
+  end
+
+  if Daidan::Commands.respond_to?(command)
+    Daidan::Commands.public_send(command, *ARGV)
+  else
+    puts "Unknown command: #{command}"
+    exit 1
+  end
 end
