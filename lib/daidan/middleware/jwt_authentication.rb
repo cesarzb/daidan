@@ -1,6 +1,3 @@
-require 'dotenv/load'
-require 'jwt'
-
 module Daidan
   module Middleware
     class JwtAuthentication

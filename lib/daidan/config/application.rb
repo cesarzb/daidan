@@ -1,8 +1,3 @@
-require 'rack'
-require 'json'
-require 'graphql'
-require 'zeitwerk'
-
 module Daidan
   class Application
     def initialize

@@ -1,5 +1,15 @@
 # frozen_string_literal: true
 
+require 'bcrypt'
+require 'dotenv/load'
+require 'graphql'
+require 'json'
+require 'jwt'
+require 'rack'
+require 'sequel'
+require 'yaml'
+require 'zeitwerk'
+
 require_relative 'daidan/version'
 require_relative 'daidan/db/connection'
 require_relative 'daidan/config/application'

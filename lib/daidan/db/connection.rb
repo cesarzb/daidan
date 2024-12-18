@@ -1,6 +1,3 @@
-require 'sequel'
-require 'yaml'
-
 module Daidan
   module Db
     class Connection

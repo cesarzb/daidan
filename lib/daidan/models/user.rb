@@ -1,6 +1,3 @@
-require 'bcrypt'
-require 'sequel'
-
 module Daidan
   class User < Sequel::Model
     include BCrypt

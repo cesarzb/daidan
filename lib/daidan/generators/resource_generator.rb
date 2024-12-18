@@ -1,5 +1,4 @@
 require 'fileutils'
-require 'sequel'
 
 module Daidan
   module Generators

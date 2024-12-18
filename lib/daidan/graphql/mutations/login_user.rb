@@ -1,6 +1,3 @@
-require 'dotenv/load'
-require 'jwt'
-
 module Daidan
   class LoginUser < BaseMutation
     argument :email, String, required: true
