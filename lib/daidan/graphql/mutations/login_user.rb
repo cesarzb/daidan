@@ -11,7 +11,7 @@ module Daidan
 
       raise GraphQL::ExecutionError, 'Invalid email or password' unless user && user.authenticate(password)
 
-      exp_time = 24.hours.from_now.to_i
+      exp_time = Time.now.to_i + (24 * 60 * 60)
       payload = {
         user_id: user.id,
         exp: exp_time
