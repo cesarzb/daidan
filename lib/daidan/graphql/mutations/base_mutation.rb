@@ -1,4 +1,3 @@
-# lib/daidan/graphql/mutations/base_mutation.rb (przykładowa ścieżka)
 module Daidan
   class BaseMutation < GraphQL::Schema::Mutation
     def resolve(**args)
@@ -17,7 +16,9 @@ module Daidan
     end
 
     def call_hook(hook_name, **args)
-      send(hook_name, **args) if respond_to?(hook_name, true)
+      return unless respond_to?(hook_name, true)
+
+      method(hook_name).arity == 0 ? send(hook_name) : send(hook_name, **args)
     end
 
     def handle_error(error)
