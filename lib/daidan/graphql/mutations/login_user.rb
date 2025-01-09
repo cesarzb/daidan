@@ -11,10 +11,17 @@ module Daidan
 
       raise GraphQL::ExecutionError, 'Invalid email or password' unless user && user.authenticate(password)
 
-      payload = { user_id: user.id }
+      exp_time = 24.hours.from_now.to_i
+      payload = {
+        user_id: user.id,
+        exp: exp_time
+      }
 
       token = JWT.encode(payload, ENV['JWT_SECRET'], 'HS256')
-      { token: token, user: user }
+      {
+        token: token,
+        user: user
+      }
     end
   end
 end
