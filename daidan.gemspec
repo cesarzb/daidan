@@ -16,6 +16,7 @@ Gem::Specification.new do |spec|
   spec.metadata['changelog_uri'] = 'https://github.com/cesarzb/daidan/blob/main/CHANGELOG.md'
   spec.metadata['allowed_push_host'] = 'https://rubygems.org'
   spec.metadata['license_uri'] = 'https://opensource.org/licenses/MIT'
+  spec.platform = Gem::Platform::RUBY
 
   spec.files = Dir.chdir(__dir__) do
     `git ls-files -z`.split("\x0").reject do |file|
